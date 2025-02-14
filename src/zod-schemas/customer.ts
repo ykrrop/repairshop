@@ -13,8 +13,6 @@ export const insertCustomerSchema = createInsertSchema(customers, {
     schema.state.length(2, "Гражданство должно быть из 2-х букв"),
   email: (schema) =>
     schema.email.email("Неверно введен адрес электронной почты"),
-  zip: (schema) =>
-    schema.zip.regex(/^\{6}$/, "Почтовый индекс должен состоять из 6 цифр"),
   phone: (schema) =>
     schema.phone.regex(
       /^(?:\+7|8)\d{10}$/,

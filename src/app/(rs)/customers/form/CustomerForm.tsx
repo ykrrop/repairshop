@@ -11,6 +11,8 @@ import {
 } from "@/zod-schemas/customer";
 import { InputWithLabel } from "@/components/inputs/inputWithLabel";
 import { TextAreaWithLabel } from "@/components/inputs/TextAreaWithLabel";
+import { SelectWithLabel } from "@/components/inputs/SelectWithLabel";
+import { StatesArray } from "@/constants/StatesArray";
 
 type Props = {
   customer?: selectCustomerSchemaType;
@@ -25,7 +27,6 @@ export default function CustomerForm({ customer }: Props) {
     address2: customer?.address2 ?? "",
     city: customer?.city ?? "",
     state: customer?.state ?? "",
-    zip: customer?.zip ?? "",
     phone: customer?.phone ?? "",
     email: customer?.email ?? "",
     notes: customer?.notes ?? "",
@@ -71,12 +72,13 @@ export default function CustomerForm({ customer }: Props) {
               fieldTitle="Город"
               nameInSchema="city"
             />
+            <SelectWithLabel
+              fieldTitle="State"
+              nameInSchema="state"
+              data={StatesArray}
+            />
           </div>
           <div className="flex flex-col gap-4 w-full max-w-xs">
-            <InputWithLabel<insertCustomerSchemaType>
-              fieldTitle="Почтовый индекс"
-              nameInSchema="zip"
-            />
             <InputWithLabel<insertCustomerSchemaType>
               fieldTitle="Почта"
               nameInSchema="email"
